@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<SOAP-ENV:Header>
+		<m:Security xmlns:m="http://schemas.xmlsoap.org/ws/2002/12/secext">
+			<m:AgencyToken>
+				<m:Cid>f684090c93d50687383c7551e40f78ef</m:Cid>
+				<m:Kid>251001</m:Kid>
+				<m:Agency/>
+				<Organization>251001</Organization>
+				<Domain>ibe.traveltainment.com</Domain>
+			</m:AgencyToken>
+		</m:Security>
+		<r:Routing xmlns:r="http://integra.traveltainment.de/routing" inVMScope="NONE">
+			<r:Services>
+				<r:Service Name="com.traveltainment.integra2.core.service.IntegraWSFacadeImpl" Destinations="java:global/inTTegraCore/Gateway!com.traveltainment.integra2.common.bean.AsyncBeanLocal" counterRPH="1"/>
+				<r:Service Name="com.traveltainment.integra2.core.service.Gateway" Destinations="java:global/inTTegraCore/Broker!com.traveltainment.integra2.common.bean.AsyncBeanLocal"/>
+				<r:Service Name="com.traveltainment.integra2.core.service.Broker" Destinations="java:global/YpsilonAdapter-ejb/RequestHandler!com.traveltainment.integra2.common.bean.AsyncBeanRemote"/>
+				<r:Service Name="com.traveltainment.integra2.adapter.ypsilon.RequestHandler" Destinations="java:global/YpsilonAdapter-ejb/YpsilonRouter!com.traveltainment.integra2.common.bean.AsyncBeanLocal"/>
+				<r:Service Name="com.traveltainment.integra2.adapter.ypsilon.YpsilonRouter" Destinations="java:global/YpsilonAdapter-ejb/ResponseHandler!com.traveltainment.integra2.common.bean.AsyncBeanLocal, java:global/YpsilonAdapter-ejb/ResponseHandler!com.traveltainment.integra2.common.bean.AsyncBeanLocal"/>
+				<r:Service Name="com.traveltainment.integra2.adapter.ypsilon.ResponseHandler" Destinations="replyTo"/>
+			</r:Services>
+			<r:Counters>
+				<r:Counter RPH="1" threshold="10"/>
+			</r:Counters>
+		</r:Routing>
+                <integra-transaction-id xmlns="http://integra.traveltainment.de/soap/header" ID="4998"/>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<OTA_TT_PkgBookRQ ActionType="Book" PrimaryLangID="de" Target="Production" TransactionIdentifier="62048a6f-8357-4cf7-bc5c-1e004b941ec5" Version="1.0" xmlns="http://www.opentravel.org/OTA/2003/05">
+			<PackageRequest BrandCode="U2">
+				<DateRange End="2015-11-07" Start="2015-10-31"/>
+				<ItineraryItems>
+					<ItineraryItem RPH="1">
+						<Flight ArrivalDateTime="2015-10-31T17:00:00" DepartureDateTime="2015-10-31T13:40:00" DirectionInd="Outbound">
+							<DepartureAirport LocationCode="BSL"/>
+							<ArrivalAirport LocationCode="FUE"/>
+							<OperatingAirline Code="U2" FlightNumber="1221"/>
+							<CabinAvailability>
+								<Seat/>
+								<PassengerRPHs ListOfPassengerRPH="1 2 "/>
+							</CabinAvailability>
+						</Flight>
+					</ItineraryItem>
+					<ItineraryItem RPH="2">
+						<Flight ArrivalDateTime="2015-11-07T22:55:00" DepartureDateTime="2015-11-07T17:40:00" DirectionInd="Inbound">
+							<DepartureAirport LocationCode="FUE"/>
+							<ArrivalAirport LocationCode="BSL"/>
+							<OperatingAirline Code="U2" FlightNumber="1222"/>
+							<CabinAvailability>
+								<Seat/>
+								<PassengerRPHs ListOfPassengerRPH="1 2 "/>
+							</CabinAvailability>
+						</Flight>
+					</ItineraryItem>
+				</ItineraryItems>
+			</PackageRequest>
+			<ContactDetail>
+				<PersonName>
+					<NamePrefix>Mr</NamePrefix>
+					<GivenName>FTI Touristik GmbH</GivenName>
+					<Surname>eFlight</Surname>
+				</PersonName>
+				<Telephone PhoneNumber="089-25251299"/>
+				<Address>
+					<StreetNmbr>Landsberger Str. 88</StreetNmbr>
+					<CityName>Muenchen</CityName>
+					<PostalCode>80339</PostalCode>
+					<CountryName Code="DE"/>
+				</Address>
+				<Email>Flugdispo-Mixx@fti.de</Email>
+			</ContactDetail>
+			<PassengerListItems>
+				<PassengerListItem BirthDate="1990-10-31" Code="10" Gender="Male" RPH="1">
+					<Name>
+						<NamePrefix>Mr</NamePrefix>
+						<GivenName>TESTER</GivenName>
+						<Surname>TESTER</Surname>
+					</Name>
+				</PassengerListItem>
+				<PassengerListItem BirthDate="1990-10-31" Code="10" Gender="Female" RPH="2">
+					<Name>
+						<NamePrefix>Mr</NamePrefix>
+						<GivenName>FESTER</GivenName>
+						<Surname>TESTER</Surname>
+					</Name>
+				</PassengerListItem>
+			</PassengerListItems>
+		</OTA_TT_PkgBookRQ>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
