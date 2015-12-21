@@ -5,6 +5,8 @@
 	<artifactId>common</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
+	
+
 	<parent>
 		<groupId>com.traveltainment.jee</groupId>
 		<artifactId>integra2</artifactId>
