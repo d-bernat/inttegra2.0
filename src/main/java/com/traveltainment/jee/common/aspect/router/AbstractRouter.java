@@ -47,7 +47,7 @@ public abstract class AbstractRouter implements Router
      */
     protected final void sendTo(final InvocationContext ctx) throws AbstractSystemException
     {
-        String str = null;
+        String strstr = null;
         Message m = InvocationContextHelper.getMessage(ctx);
         try
         {
